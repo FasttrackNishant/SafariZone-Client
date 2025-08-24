@@ -9,6 +9,7 @@ import Unauthorized from '../shared/pages/Unauthorized';
 import TouristLogin from '../features/auth/pages/tourist/TouristLogin';
 import EmployeeLogin from '../features/auth/pages/employee/EmployeeLogin';
 import TouristDashboard from '../features/dashboard/tourist/TouristDashboard';
+import EmployeeDashboard from '../features/dashboard/employee/EmployeeDashboard';
 
 export default function App() {
 	return (
@@ -21,6 +22,13 @@ export default function App() {
 
 			<Route path="/tourist" >
 				 <Route path="dashboard" element={<TouristDashboard />} />
+				{/* <Route path="profile" element={<Profile />} />
+				<Route path="booking" element={<Booking />} />
+				<Route path="history" element={<History />} />
+				<Route index element={<Booking />} />{' '} */}
+			</Route>
+			<Route path="/employee" >
+				 <Route path="dashboard" element={<EmployeeDashboard />} />
 				{/* <Route path="profile" element={<Profile />} />
 				<Route path="booking" element={<Booking />} />
 				<Route path="history" element={<History />} />

@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
+import { useMsal } from '@azure/msal-react';
 
 const AuthContex = createContext();
 
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [token, setToken] = useState(null);
+	const {instance} = useMsal();
 
 	useEffect(() => {
 		const storedToken = localStorage.getItem('safari_token');
@@ -13,8 +15,9 @@ export const AuthProvider = ({ children }) => {
 				if (storedToken) setToken(storedToken);
 				try {
 					const decoded = jwtDecode(storedToken);
+					console.log(decoded)
 					setUser({
-						id: decoded.sub || null,
+						id: decoded.id || null,
 						email: decoded.email || null,
 						roles: decoded.role
 							? [decoded.role]
@@ -27,10 +30,16 @@ export const AuthProvider = ({ children }) => {
 			}
 	}, []);
 
-    const logout = () => {
+  const logout = () => {
+    // Clear local storage
+    localStorage.removeItem("safari_token");
     setToken(null);
     setUser(null);
-    localStorage.removeItem("safari_token");
+
+    // Logout from Azure AD (optional)
+    if (instance.getActiveAccount()) {
+      instance.logoutPopup(); // or logoutRedirect() if preferred
+    }
   };
 
 	return (

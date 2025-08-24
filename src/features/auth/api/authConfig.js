@@ -10,6 +10,7 @@ export const msalConfig = {
   },
 };
 
+
 export const loginRequest = {
-    scopes: ["User.Read"]
+	scopes: [`api://${import.meta.env.VITE_AZURE_API_ID}/Employee.Read`],
 };
