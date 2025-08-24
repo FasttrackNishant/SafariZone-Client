@@ -1,6 +1,7 @@
 import { useMsal } from '@azure/msal-react';
 import { loginRequest } from '../features/auth/api/authConfig';
 import { jwtDecode } from 'jwt-decode';
+import './App.css'
 
 export default function App() {
 	const { instance, accounts } = useMsal();
@@ -32,7 +33,12 @@ export default function App() {
 
 	return (
 		<div style={{ padding: 24 }}>
-			<h1>SafariZone Employee Portal</h1>
+
+			<h1 className="text-3xl bg-amber-50 text-amber-500 font-bold underline">
+    Hello world!
+  </h1>
+
+			{/* <h1>SafariZone Employee Portal</h1>
 			{accounts.length ? (
 				<>
 					<p>Signed in as: {accounts[0].username}</p>
@@ -41,7 +47,7 @@ export default function App() {
 				</>
 			) : (
 				<button onClick={login}>Login with Microsoft</button>
-			)}
+			)} */}
 		</div>
 	);
 }
