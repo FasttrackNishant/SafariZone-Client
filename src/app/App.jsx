@@ -16,6 +16,7 @@ import PackagesPage from '../features/packages/PackagesPage';
 import ParkDetailPage from '../features/parks/ParkDetailPage';
 import PackageDetailPage from '../features/packages/PackageDetailPage';
 import SafariBookingPage from '../features/booking/SafariBookingPage';
+import PaymentPage from '../features/payment/PaymentPage';
 
 export default function App() {
 	return (
@@ -39,11 +40,18 @@ export default function App() {
 			<Route path="/employee/dashboard" element={<EmployeeDashboard />} />
 
 			{/* Packages Page */}
-			<Route path='/packages' element={<PackagesPage/>} />
+			<Route path="/packages" element={<PackagesPage />} />
 
-			<Route path="/parks/:id" element={<ParkDetailPage/>} />
-			<Route path="/package-details/:id" element={<PackageDetailPage/>} />
-			<Route path="/book-safari/:parkId/:zoneId/:sessionId/:vehicleType" element={<SafariBookingPage/>} />
+			<Route path="/parks/:id" element={<ParkDetailPage />} />
+			<Route
+				path="/package-details/:id"
+				element={<PackageDetailPage />}
+			/>
+			<Route
+				path="/book-safari/:parkId/:zoneId/:sessionId/:vehicleType"
+				element={<SafariBookingPage />}
+			/>
+			<Route path="/payment" element={<PaymentPage />} />
 
 			{/* Misc */}
 			<Route path="/test" element={<Test />} />
