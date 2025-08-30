@@ -1,0 +1,443 @@
+{
+  "packages": [
+    {
+      "id": 1,
+      "name": "Weekend Wildlife Escape",
+      "duration": "2 Days, 1 Night",
+      "price": 8999,
+      "originalPrice": 11999,
+      "rating": 4.8,
+      "reviews": 156,
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+      "park": "Tadoba Andhari",
+      "category": "weekend",
+      "popular": true,
+      "highlights": ["2 Safari Rides", "Accommodation", "All Meals", "Expert Guide"],
+      "inclusions": ["Hotel Stay", "Safari Jeep", "Forest Entry Fees", "Photography Guide"],
+      "bestTime": "Oct - Mar",
+      "groupSize": "2-6 People",
+      "description": "Perfect weekend getaway to experience Maharashtra's premier tiger reserve with comfortable accommodation and guided safaris.",
+      "fullDescription": "Escape the hustle and bustle of city life with our weekend wildlife package to Tadoba Andhari Tiger Reserve. This carefully curated experience offers the perfect balance of adventure and comfort, featuring two exciting safari rides through tiger territory, comfortable accommodation, and expert guidance throughout your journey.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Evening Safari",
+          "time": "2:00 PM - 8:00 PM",
+          "description": "Arrive at Tadoba, check into your accommodation, and embark on your first evening safari to spot tigers and other wildlife.",
+          "activities": [
+            "Hotel check-in and welcome drink",
+            "Evening safari (3:00 PM - 7:00 PM)",
+            "Wildlife photography session",
+            "Dinner and overnight stay"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Morning Safari & Departure",
+          "time": "6:00 AM - 2:00 PM",
+          "description": "Early morning safari for the best wildlife sightings, followed by breakfast and departure.",
+          "activities": [
+            "Early morning safari (6:00 AM - 10:00 AM)",
+            "Breakfast at resort",
+            "Check-out and departure",
+            "Optional visit to local tribal village"
+          ]
+        }
+      ],
+      "pricing": {
+        "basePrice": 8999,
+        "childPrice": 6999,
+        "infantPrice": 2999,
+        "currency": "INR"
+      },
+      "terms": [
+        "ID proof required for all guests",
+        "Children below 5 years pay infant rate",
+        "Safari timings subject to forest department rules",
+        "Cancellation charges apply as per policy",
+        "Weather dependent activities",
+        "No refund for unused services"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Photography Master Class",
+      "duration": "3 Days, 2 Nights",
+      "price": 15999,
+      "originalPrice": 19999,
+      "rating": 4.9,
+      "reviews": 89,
+      "image": "https://images.unsplash.com/photo-1549366021-9f761d040a94?auto=format&fit=crop&w=800&q=80",
+      "park": "Melghat Reserve",
+      "category": "photography",
+      "highlights": ["Professional Guide", "Equipment Provided", "4 Safari Sessions", "Photo Editing Workshop"],
+      "inclusions": ["Camera Equipment", "Editing Software", "Print Portfolio", "Certificate"],
+      "bestTime": "Nov - Feb",
+      "groupSize": "4-8 People",
+      "description": "Intensive wildlife photography workshop in Melghat Tiger Reserve with professional equipment and expert guidance.",
+      "fullDescription": "Master the art of wildlife photography in the pristine wilderness of Melghat Tiger Reserve. This comprehensive workshop includes professional camera equipment, expert guidance from wildlife photographers, and hands-on experience in capturing the perfect wildlife shots.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1549366021-9f761d040a94?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1592784201029-bdb351d47eff?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Equipment Briefing",
+          "time": "2:00 PM - 8:00 PM",
+          "description": "Arrival, camera equipment distribution, and basic photography workshop followed by evening safari.",
+          "activities": [
+            "Check-in and welcome session",
+            "Camera equipment distribution",
+            "Basic photography techniques workshop",
+            "Evening safari with practice session"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Full Day Photography Safari",
+          "time": "6:00 AM - 8:00 PM",
+          "description": "Intensive photography day with morning and evening safaris, plus editing workshop.",
+          "activities": [
+            "Early morning golden hour safari",
+            "Photo review and feedback session",
+            "Photo editing workshop",
+            "Evening safari for different lighting"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Final Safari & Portfolio Creation",
+          "time": "6:00 AM - 2:00 PM",
+          "description": "Final safari session and creation of your photography portfolio.",
+          "activities": [
+            "Final photography safari",
+            "Portfolio creation workshop",
+            "Print selection and certificate presentation",
+            "Departure"
+          ]
+        }
+      ],
+      "pricing": {
+        "basePrice": 15999,
+        "childPrice": 12999,
+        "infantPrice": 5999,
+        "currency": "INR"
+      },
+      "terms": [
+        "Basic photography knowledge recommended",
+        "All equipment provided but can bring own",
+        "Weather dependent outdoor activities",
+        "Digital portfolio included",
+        "Physical prints charged separately",
+        "Certificate valid for wildlife photography courses"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Family Adventure Package",
+      "duration": "2 Days, 1 Night",
+      "price": 12999,
+      "originalPrice": 16999,
+      "rating": 4.7,
+      "reviews": 234,
+      "image": "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=800&q=80",
+      "park": "Sanjay Gandhi National Park",
+      "category": "family",
+      "highlights": ["Kid-Friendly Safaris", "Educational Tours", "Safety First", "Family Activities"],
+      "inclusions": ["Child Safety Gear", "Educational Materials", "Snacks & Drinks", "Activity Books"],
+      "bestTime": "Year Round",
+      "groupSize": "2-10 People",
+      "description": "Perfect family adventure combining wildlife education, safety, and fun activities for all ages in Mumbai's urban national park.",
+      "fullDescription": "Designed specifically for families with children, this package offers a safe and educational wildlife experience in Sanjay Gandhi National Park. Features kid-friendly safaris, educational activities, and safety measures to ensure a memorable experience for the entire family.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1574263867128-d9c7e06c03b3?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1566650046306-0d5353eec8f9?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Family Safari Adventure",
+          "time": "9:00 AM - 8:00 PM",
+          "description": "Family-friendly safari with educational activities and visit to Kanheri Caves.",
+          "activities": [
+            "Family safari with nature guide",
+            "Educational wildlife presentation",
+            "Kanheri Caves exploration",
+            "Kids activity session and games"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Nature Trails & Departure",
+          "time": "8:00 AM - 4:00 PM",
+          "description": "Nature walks, interactive sessions, and family bonding activities.",
+          "activities": [
+            "Guided nature trail",
+            "Wildlife tracking workshop for kids",
+            "Family picnic lunch",
+            "Certificate ceremony and departure"
+          ]
+        }
+      ],
+      "pricing": {
+        "basePrice": 12999,
+        "childPrice": 8999,
+        "infantPrice": 3999,
+        "currency": "INR"
+      },
+      "terms": [
+        "Child safety gear mandatory for kids under 12",
+        "Adult supervision required at all times",
+        "Age-appropriate activities provided",
+        "First aid facilities available",
+        "Dietary restrictions can be accommodated",
+        "Weather-appropriate clothing recommended"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Luxury Safari Experience",
+      "duration": "3 Days, 2 Nights",
+      "price": 25999,
+      "originalPrice": 32999,
+      "rating": 4.9,
+      "reviews": 67,
+      "image": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80",
+      "park": "Tadoba Andhari",
+      "category": "luxury",
+      "premium": true,
+      "highlights": ["5-Star Resort", "Private Safari", "Spa Services", "Fine Dining"],
+      "inclusions": ["Luxury Accommodation", "Private Jeep", "Personal Butler", "Helicopter Transfer"],
+      "bestTime": "Oct - Mar",
+      "groupSize": "2-4 People",
+      "description": "Ultimate luxury wildlife experience with 5-star accommodation, private safaris, and premium services.",
+      "fullDescription": "Indulge in the ultimate wildlife luxury experience with our premium package featuring 5-star resort accommodation, private safari vehicles, personal butler service, and helicopter transfers. This exclusive experience combines wildlife adventure with unmatched comfort and personalized service.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Luxury Arrival Experience",
+          "time": "2:00 PM - 8:00 PM",
+          "description": "Helicopter arrival, luxury suite check-in, welcome ceremony, and private evening safari.",
+          "activities": [
+            "Helicopter transfer from Mumbai/Nagpur",
+            "Presidential suite check-in",
+            "Champagne welcome and spa session",
+            "Private evening safari with expert naturalist"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Premium Safari & Spa Day",
+          "time": "6:00 AM - 10:00 PM",
+          "description": "Private morning safari, luxury spa treatments, fine dining, and cultural entertainment.",
+          "activities": [
+            "Private dawn safari with breakfast in jungle",
+            "Full body spa and wellness treatments",
+            "Gourmet lunch with wine pairing",
+            "Cultural evening with local performances"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Final Safari & Departure",
+          "time": "6:00 AM - 2:00 PM",
+          "description": "Final private safari, luxury brunch, and helicopter departure.",
+          "activities": [
+            "Final private safari with photographer",
+            "Luxury brunch at resort",
+            "Gift presentation and checkout",
+            "Helicopter transfer to departure point"
+          ]
+        }
+      ],
+      "pricing": {
+        "basePrice": 25999,
+        "childPrice": 19999,
+        "infantPrice": 9999,
+        "currency": "INR"
+      },
+      "terms": [
+        "Advance booking required (minimum 7 days)",
+        "Weather dependent helicopter transfers",
+        "Spa treatments require advance booking",
+        "Dietary preferences accommodated",
+        "Personal butler service included",
+        "Photography service complimentary"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Multi-Park Explorer",
+      "duration": "5 Days, 4 Nights",
+      "price": 22999,
+      "originalPrice": 28999,
+      "rating": 4.8,
+      "reviews": 112,
+      "image": "https://images.unsplash.com/photo-1592784201029-bdb351d47eff?auto=format&fit=crop&w=800&q=80",
+      "park": "All Parks",
+      "category": "adventure",
+      "highlights": ["3 National Parks", "6 Safari Rides", "Cultural Tours", "Transportation"],
+      "inclusions": ["Inter-park Travel", "All Accommodations", "Local Guides", "Cultural Experiences"],
+      "bestTime": "Nov - Mar",
+      "groupSize": "4-12 People",
+      "description": "Comprehensive Maharashtra wildlife tour covering three national parks with cultural experiences and comfortable transportation.",
+      "fullDescription": "Explore the diverse wildlife heritage of Maharashtra with our comprehensive multi-park tour. Visit Tadoba, Melghat, and Sanjay Gandhi National Parks while experiencing local culture, comfortable accommodations, and expert guidance throughout your journey.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1592784201029-bdb351d47eff?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Tadoba Andhari Tiger Reserve",
+          "time": "Full Day",
+          "description": "Arrival at Tadoba, evening safari, and overnight stay.",
+          "activities": [
+            "Arrival and check-in at Tadoba",
+            "Evening safari in core zone",
+            "Dinner and cultural program",
+            "Overnight at forest lodge"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Tadoba to Melghat",
+          "time": "Full Day",
+          "description": "Morning safari at Tadoba, travel to Melghat, evening arrival.",
+          "activities": [
+            "Early morning safari at Tadoba",
+            "Breakfast and checkout",
+            "Scenic drive to Melghat (4 hours)",
+            "Check-in and rest at Melghat"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Melghat Tiger Reserve",
+          "time": "Full Day",
+          "description": "Full day exploring Melghat with morning and evening safaris.",
+          "activities": [
+            "Morning safari in Melghat core zone",
+            "Visit to tribal village",
+            "Lunch with local community",
+            "Evening safari and night stay"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Melghat to Mumbai",
+          "time": "Full Day",
+          "description": "Travel to Mumbai and evening at Sanjay Gandhi National Park.",
+          "activities": [
+            "Early checkout from Melghat",
+            "Drive to Mumbai (6 hours with stops)",
+            "Check-in near Sanjay Gandhi Park",
+            "Evening visit to Kanheri Caves"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Sanjay Gandhi & Departure",
+          "time": "Half Day",
+          "description": "Morning safari at Sanjay Gandhi National Park and departure.",
+          "activities": [
+            "Morning safari at Sanjay Gandhi Park",
+            "Nature trails and birdwatching",
+            "Brunch and checkout",
+            "Transfer to airport/railway station"
+          ]
+        }
+      ],
+      "pricing": {
+        "basePrice": 22999,
+        "childPrice": 17999,
+        "infantPrice": 7999,
+        "currency": "INR"
+      },
+      "terms": [
+        "All transportation included",
+        "Accommodation in mid-range hotels/lodges",
+        "Local guides at each park",
+        "Cultural experiences included",
+        "Flexible itinerary based on weather",
+        "Group discounts available for 8+ people"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Corporate Team Building",
+      "duration": "2 Days, 1 Night",
+      "price": 18999,
+      "originalPrice": 23999,
+      "rating": 4.6,
+      "reviews": 78,
+      "image": "https://images.unsplash.com/photo-1695367255234-2cb7fbc6425b?auto=format&fit=crop&w=800&q=80",
+      "park": "Sanjay Gandhi National Park",
+      "category": "corporate",
+      "highlights": ["Team Activities", "Conference Facilities", "Team Challenges", "Networking Events"],
+      "inclusions": ["Meeting Rooms", "Team Building Activities", "Corporate Discounts", "Event Coordination"],
+      "bestTime": "Year Round",
+      "groupSize": "10-50 People",
+      "description": "Professional corporate retreat combining team building activities with wildlife experiences in a natural setting.",
+      "fullDescription": "Strengthen team bonds and boost morale with our corporate team building package. Combines professional meeting facilities with unique wildlife experiences, team challenges, and networking opportunities in the natural environment of Sanjay Gandhi National Park.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1695367255234-2cb7fbc6425b?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1566650046306-0d5353eec8f9?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Team Building & Safari",
+          "time": "9:00 AM - 8:00 PM",
+          "description": "Ice-breaking activities, team challenges, safari experience, and evening networking.",
+          "activities": [
+            "Welcome and ice-breaking session",
+            "Team building challenges in nature",
+            "Group safari experience",
+            "Networking dinner and activities"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Workshops & Departure",
+          "time": "8:00 AM - 4:00 PM",
+          "description": "Leadership workshops, problem-solving activities, and team presentations.",
+          "activities": [
+            "Leadership and communication workshops",
+            "Problem-solving outdoor challenges",
+            "Team presentation sessions",
+            "Closing ceremony and departure"
+          ]
+        }
+      ],
+      "pricing": {
+        "basePrice": 18999,
+        "groupDiscount": 15,
+        "currency": "INR"
+      },
+      "terms": [
+        "Minimum 10 participants required",
+        "Professional facilitation included",
+        "Conference facilities with AV equipment",
+        "Customizable activities based on requirements",
+        "Catering options available",
+        "Transport coordination can be arranged"
+      ]
+    }
+  ]
+}
