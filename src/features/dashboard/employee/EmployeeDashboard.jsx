@@ -1,115 +1,158 @@
-import { Outlet, NavLink } from "react-router";
-import { useAuth } from "../../auth/context/AuthContext";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import Navbar from '../../main/navbar/Navbar'
+import Footer from '../../main/footer/Footer';
+import employeeDashboardData from './employee-dashboard-data';
+
+// Component imports
+import DashboardOverview from './DashboardOverview';
+import SafariManagement from './SafariManagement';
+import VehicleManagement from './VehicleManagement';
+import StaffManagement from './StaffManagement';
+import CheckInSystem from './CheckInSystem';
+import ParkOperations from './ParkOperations';
+import AnalyticsReports from './AnalyticsReports';
+import CommunicationCenter from './CommunicationCenter';
+import BackgroundOrbs from '../../booking/BackgroundOrbs';
 
 export default function EmployeeDashboard() {
-  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('overview');
+  const [employee, setEmployee] = useState(employeeDashboardData.employee);
+  const [isVisible, setIsVisible] = useState({});
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting && target.id) {
+            setIsVisible(prev => ({ ...prev, [target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const sidebarItems = [
+    { id: 'overview', label: 'Dashboard Overview', icon: '📊', roles: ['all'] },
+    { id: 'safaris', label: 'Safari Management', icon: '🚙', roles: ['Park Manager', 'Booking Staff', 'Guide'] },
+    { id: 'vehicles', label: 'Vehicle Management', icon: '🔧', roles: ['Park Manager', 'Maintenance Staff'] },
+    { id: 'staff', label: 'Staff Management', icon: '👥', roles: ['Park Manager', 'Supervisor'] },
+    { id: 'checkin', label: 'Check-In System', icon: '✅', roles: ['Booking Staff', 'Guide'] },
+    { id: 'operations', label: 'Park Operations', icon: '🏞️', roles: ['Park Manager', 'Park Ranger'] },
+    { id: 'analytics', label: 'Analytics & Reports', icon: '📈', roles: ['Park Manager', 'Admin'] },
+    { id: 'communication', label: 'Communication', icon: '💬', roles: ['all'] }
+  ];
+
+  const filteredSidebarItems = sidebarItems.filter(item => 
+    item.roles.includes('all') || item.roles.includes(employee.role)
+  );
+
+  const renderContent = () => {
+    switch(activeTab) {
+      case 'overview':
+        return <DashboardOverview data={employeeDashboardData} />;
+      case 'safaris':
+        return <SafariManagement safaris={employeeDashboardData.todaysSafaris} />;
+      case 'vehicles':
+        return <VehicleManagement vehicles={employeeDashboardData.vehicles} />;
+      case 'staff':
+        return <StaffManagement staff={employeeDashboardData.staff} />;
+      case 'checkin':
+        return <CheckInSystem safaris={employeeDashboardData.todaysSafaris} />;
+      case 'operations':
+        return <ParkOperations operations={employeeDashboardData.parkOperations} />;
+      case 'analytics':
+        return <AnalyticsReports analytics={employeeDashboardData.analytics} />;
+      case 'communication':
+        return <CommunicationCenter communication={employeeDashboardData.communication} />;
+      default:
+        return <DashboardOverview data={employeeDashboardData} />;
+    }
+  };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white flex flex-col">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold mb-6">SafariZone</h1>
-          <nav className="flex flex-col gap-4">
-            <NavLink
-              to="assigned-parks"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded hover:bg-gray-700 ${isActive ? "bg-gray-700" : ""}`
-              }
-            >
-              Assigned Parks
-            </NavLink>
-            <NavLink
-              to="pending-bookings"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded hover:bg-gray-700 ${isActive ? "bg-gray-700" : ""}`
-              }
-            >
-              Pending Bookings
-            </NavLink>
-            <NavLink
-              to="history"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded hover:bg-gray-700 ${isActive ? "bg-gray-700" : ""}`
-              }
-            >
-              History
-            </NavLink>
-          </nav>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-black text-white">
+      <Navbar />
+      <BackgroundOrbs />
 
-        <div className="mt-auto p-6">
-          <span className="block mb-2">{user?.email}</span>
-          <button
-            onClick={logout}
-            className="w-full bg-red-600 py-2 rounded hover:bg-red-700 font-semibold"
-          >
-            Logout
-          </button>
-        </div>
-      </aside>
+      <div className="pt-20">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          {/* Header */}
+          <div className="mb-8">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <h1 className="text-4xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+                    Employee Dashboard
+                  </span>
+                </h1>
+                <p className="text-slate-300 text-lg">
+                  Welcome back, {employee.name} ({employee.role})
+                </p>
+              </div>
+              
+              <div className="mt-4 lg:mt-0 flex items-center space-x-4">
+                <div className="text-right">
+                  <p className="text-slate-400 text-sm">Current Shift</p>
+                  <p className="text-emerald-400 font-semibold">{employee.shift}</p>
+                </div>
+                <img 
+                  src={employee.profilePicture} 
+                  alt={employee.name}
+                  className="w-12 h-12 rounded-full border-2 border-emerald-500"
+                />
+              </div>
+            </div>
+          </div>
 
-      {/* Main content */}
-      <main className="flex-1 p-8">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-700">Employee Dashboard</h2>
-          <div>
-            <span className="px-4 py-2 bg-white rounded shadow">Role: {user?.roles?.join(", ")}</span>
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24">
+                <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6">
+                  <div className="text-center mb-6">
+                    <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <span className="text-2xl">🧑‍💼</span>
+                    </div>
+                    <h3 className="font-semibold text-slate-200">{employee.name}</h3>
+                    <span className="text-emerald-400 text-sm">{employee.role}</span>
+                  </div>
+
+                  <nav className="space-y-2">
+                    {filteredSidebarItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => setActiveTab(item.id)}
+                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                          activeTab === item.id
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/30'
+                        }`}
+                      >
+                        <span className="text-lg">{item.icon}</span>
+                        <span className="font-medium text-sm">{item.label}</span>
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="lg:col-span-4">
+              {renderContent()}
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded shadow flex flex-col items-start">
-            <span className="text-gray-500">Assigned Parks</span>
-            <span className="text-2xl font-bold mt-2">5</span>
-          </div>
-          <div className="bg-white p-6 rounded shadow flex flex-col items-start">
-            <span className="text-gray-500">Pending Bookings</span>
-            <span className="text-2xl font-bold mt-2">8</span>
-          </div>
-          <div className="bg-white p-6 rounded shadow flex flex-col items-start">
-            <span className="text-gray-500">Completed Safaris</span>
-            <span className="text-2xl font-bold mt-2">24</span>
-          </div>
-        </div>
-
-        {/* Recent Bookings Table */}
-        <div className="bg-white rounded shadow p-6 mb-8">
-          <h3 className="text-xl font-bold mb-4">Recent Bookings</h3>
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr>
-                <th className="border-b py-2 px-4">Safari Name</th>
-                <th className="border-b py-2 px-4">Tourist</th>
-                <th className="border-b py-2 px-4">Date</th>
-                <th className="border-b py-2 px-4">Vehicle</th>
-                <th className="border-b py-2 px-4">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4">Tiger Safari</td>
-                <td className="py-2 px-4">John Doe</td>
-                <td className="py-2 px-4">2025-09-01</td>
-                <td className="py-2 px-4">Gypsy</td>
-                <td className="py-2 px-4 text-green-600 font-semibold">Confirmed</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4">Elephant Safari</td>
-                <td className="py-2 px-4">Jane Smith</td>
-                <td className="py-2 px-4">2025-09-03</td>
-                <td className="py-2 px-4">Jeep</td>
-                <td className="py-2 px-4 text-yellow-600 font-semibold">Pending</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {/* Nested Routes */}
-        <Outlet />
-      </main>
+      <Footer />
     </div>
   );
 }
