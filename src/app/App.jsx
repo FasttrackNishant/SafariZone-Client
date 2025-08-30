@@ -15,6 +15,7 @@ import Unauthorized from '../features/utils/pages/Unauthorized';
 import PackagesPage from '../features/packages/PackagesPage';
 import ParkDetailPage from '../features/parks/ParkDetailPage';
 import PackageDetailPage from '../features/packages/PackageDetailPage';
+import SafariBookingPage from '../features/booking/SafariBookingPage';
 
 export default function App() {
 	return (
@@ -42,6 +43,7 @@ export default function App() {
 
 			<Route path="/parks/:id" element={<ParkDetailPage/>} />
 			<Route path="/package-details/:id" element={<PackageDetailPage/>} />
+			<Route path="/book-safari/:parkId/:zoneId/:sessionId/:vehicleType" element={<SafariBookingPage/>} />
 
 			{/* Misc */}
 			<Route path="/test" element={<Test />} />
