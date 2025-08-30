@@ -1,130 +1,131 @@
-import React from "react";
-import { Outlet, NavLink, Link } from "react-router";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import dashboardData from './dashboard-data';
+
+// Component imports
+import WelcomeSection from './WelcomeSection';
+import UpcomingTrips from './UpcomingTrips';
+import BookingHistory from './BookingHistory';
+import ComplaintCenter from './ComplaintCenter';
+import NotificationCenter from './NotificationCenter';
+import ProfileSection from './ProfileSection';
+import SupportSection from './SupportSection';
+import StatsOverview from './StatsOverview';
 
 export default function TouristDashboard() {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('overview');
+  const [user, setUser] = useState(dashboardData.user);
+  const [notifications, setNotifications] = useState(dashboardData.notifications);
+  const [isVisible, setIsVisible] = useState({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting && target.id) {
+            setIsVisible(prev => ({ ...prev, [target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const sidebarItems = [
+    { id: 'overview', label: 'Dashboard Overview', icon: '🏠' },
+    { id: 'trips', label: 'My Trips', icon: '🎯' },
+    { id: 'history', label: 'Booking History', icon: '📋' },
+    { id: 'complaints', label: 'Complaints', icon: '⚠️' },
+    { id: 'notifications', label: 'Notifications', icon: '🔔' },
+    { id: 'profile', label: 'Profile Settings', icon: '👤' },
+    { id: 'support', label: 'Support', icon: '💬' }
+  ];
+
+  const renderContent = () => {
+    switch(activeTab) {
+      case 'overview':
+        return (
+          <div className="space-y-8">
+            <WelcomeSection user={user} quickLinks={dashboardData.quickLinks} />
+            <StatsOverview stats={dashboardData.stats} />
+            <UpcomingTrips trips={dashboardData.upcomingTrips.slice(0, 2)} />
+            <NotificationCenter notifications={notifications.slice(0, 3)} />
+          </div>
+        );
+      case 'trips':
+        return <UpcomingTrips trips={dashboardData.upcomingTrips} />;
+      case 'history':
+        return <BookingHistory bookings={dashboardData.bookingHistory} />;
+      case 'complaints':
+        return <ComplaintCenter complaints={dashboardData.complaints} />;
+      case 'notifications':
+        return <NotificationCenter notifications={notifications} setNotifications={setNotifications} />;
+      case 'profile':
+        return <ProfileSection user={user} setUser={setUser} />;
+      case 'support':
+        return <SupportSection supportData={dashboardData.support} />;
+      default:
+        return <div>Content not found</div>;
+    }
+  };
+
   return (
-		<div className="flex min-h-screen bg-gray-100">
-			{/* Sidebar */}
-			<aside className="w-64 bg-gray-800 text-white flex flex-col">
-				<div className="p-6">
-					<Link to="/">
-						<h1 className="text-2xl font-bold mb-6">SafariZone</h1>
-					</Link>
-					<nav className="flex flex-col gap-4">
-						<NavLink
-							to="booking"
-							className={({ isActive }) =>
-								`px-4 py-2 rounded hover:bg-gray-700 ${
-									isActive ? 'bg-gray-700' : ''
-								}`
-							}>
-							Bookings
-						</NavLink>
-						<NavLink
-							to="profile"
-							className={({ isActive }) =>
-								`px-4 py-2 rounded hover:bg-gray-700 ${
-									isActive ? 'bg-gray-700' : ''
-								}`
-							}>
-							Profile
-						</NavLink>
-						<NavLink
-							to="history"
-							className={({ isActive }) =>
-								`px-4 py-2 rounded hover:bg-gray-700 ${
-									isActive ? 'bg-gray-700' : ''
-								}`
-							}>
-							History
-						</NavLink>
-					</nav>
-				</div>
-				<div className="mt-auto p-6">
-					<button className="w-full bg-red-600 py-2 rounded hover:bg-red-700">
-						Logout
-					</button>
-				</div>
-			</aside>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-black text-white">
+      {/* <Navbar /> */}
+      {/* <BackgroundOrbs /> */}
 
-			{/* Main content */}
-			<main className="flex-1 p-8">
-				{/* Header */}
-				<div className="flex justify-between items-center mb-8">
-					<h2 className="text-3xl font-bold text-gray-700">
-						Dashboard
-					</h2>
-					<div>
-						<span className="px-4 py-2 bg-white rounded shadow">
-							Welcome, Tourist
-						</span>
-					</div>
-				</div>
+      <div className="pt-20">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24">
+                <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6">
+                  <div className="text-center mb-6">
+                    <img 
+                      src={user.profilePicture} 
+                      alt={user.name}
+                      className="w-16 h-16 rounded-full mx-auto mb-3 border-2 border-emerald-500"
+                    />
+                    <h3 className="font-semibold text-slate-200">{user.name}</h3>
+                    <span className="text-emerald-400 text-sm">{user.membershipTier}</span>
+                  </div>
 
-				{/* Stats Cards */}
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-					<div className="bg-white p-6 rounded shadow flex flex-col items-start">
-						<span className="text-gray-500">Upcoming Safaris</span>
-						<span className="text-2xl font-bold mt-2">3</span>
-					</div>
-					<div className="bg-white p-6 rounded shadow flex flex-col items-start">
-						<span className="text-gray-500">Total Bookings</span>
-						<span className="text-2xl font-bold mt-2">12</span>
-					</div>
-					<div className="bg-white p-6 rounded shadow flex flex-col items-start">
-						<span className="text-gray-500">
-							Feedbacks Submitted
-						</span>
-						<span className="text-2xl font-bold mt-2">5</span>
-					</div>
-				</div>
+                  <nav className="space-y-2">
+                    {sidebarItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => setActiveTab(item.id)}
+                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                          activeTab === item.id
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/30'
+                        }`}
+                      >
+                        <span className="text-lg">{item.icon}</span>
+                        <span className="font-medium">{item.label}</span>
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              </div>
+            </div>
 
-				{/* Recent Bookings Table */}
-				<div className="bg-white rounded shadow p-6">
-					<h3 className="text-xl font-bold mb-4">Recent Bookings</h3>
-					<table className="w-full text-left border-collapse">
-						<thead>
-							<tr>
-								<th className="border-b py-2 px-4">
-									Safari Name
-								</th>
-								<th className="border-b py-2 px-4">Date</th>
-								<th className="border-b py-2 px-4">Vehicle</th>
-								<th className="border-b py-2 px-4">Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td className="py-2 px-4">Tiger Safari</td>
-								<td className="py-2 px-4">2025-09-01</td>
-								<td className="py-2 px-4">Gypsy</td>
-								<td className="py-2 px-4 text-green-600 font-semibold">
-									Confirmed
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2 px-4">Elephant Safari</td>
-								<td className="py-2 px-4">2025-09-03</td>
-								<td className="py-2 px-4">Jeep</td>
-								<td className="py-2 px-4 text-yellow-600 font-semibold">
-									Pending
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2 px-4">Bird Watching</td>
-								<td className="py-2 px-4">2025-09-05</td>
-								<td className="py-2 px-4">Van</td>
-								<td className="py-2 px-4 text-red-600 font-semibold">
-									Cancelled
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+            {/* Main Content */}
+            <div className="lg:col-span-4">
+              <div className="space-y-8">
+                {renderContent()}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-				{/* Nested Routes */}
-				<Outlet />
-			</main>
-		</div>
+      {/* <Footer /> */}
+    </div>
   );
 }
