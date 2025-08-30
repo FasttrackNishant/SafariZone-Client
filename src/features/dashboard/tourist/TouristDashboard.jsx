@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, NavLink, Link } from "react-router";
 
-export default function Dashboard() {
+export default function TouristDashboard() {
   return (
 		<div className="flex min-h-screen bg-gray-100">
 			{/* Sidebar */}
