@@ -32,6 +32,7 @@ export default function App() {
 			{/* Auth Pages */}
 			<Route path="/login-tourist" element={<TouristLogin />} />
 			<Route path="/login-employee" element={<EmployeeLogin />} />
+			<Route path="/auth/tourist" element={<TouristLogin />} />
 
 			{/* Tourist Routes */}
 			<Route path="/tourist/dashboard" element={<TouristDashboard />} />
