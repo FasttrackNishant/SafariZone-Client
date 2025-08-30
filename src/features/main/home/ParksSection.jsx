@@ -1,20 +1,23 @@
 // sections/ParksSection.jsx
 import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import tadobaImg from "../../../assets/tadoba.jpg"
 import sanjaygandhi from "../../../assets/sanjay_gandhi.jpg"
 import melgath from "../../../assets/melghtat.jpg"
 
 const parks = [
   {
+    "id" : "tadoba",
     "name": "Tadoba Andhari Tiger Reserve",
     "location": "Chandrapur, Maharashtra",
     "img": tadobaImg,
-    "desc": "The jewel of Maharashtra's wildlife, famous for thrilling tiger sightings and dense forests.",
+    "desc": "The jewel of Maharashtra’s wildlife, Tadoba is renowned for its thrilling tiger sightings, dense teak and bamboo forests, diverse flora and fauna.",
     "highlights": ["Tiger Sightings", "Dense Forests", "Night Safaris"],
     "rating": 4.8,
     "visitors": "50K+"
   },
   {
+    "id":"sanjay-gandhi",
     "name": "Sanjay Gandhi National Park",
     "location": "Mumbai, Maharashtra", 
     "img": sanjaygandhi,
@@ -24,6 +27,7 @@ const parks = [
     "visitors": "100K+"
   },
   {
+    "id":"melghat",
     "name": "Melghat Tiger Reserve",
     "location": "Amravati, Maharashtra",
     "img": melgath,
@@ -126,7 +130,7 @@ export default function ParksSection({ isVisible }) {
                 </p>
                 
                 <button 
-                  onClick={() => navigate(`/park/${park.name.toLowerCase().replace(/\s+/g, '-')}`)}
+                  onClick={() => navigate(`/parks/${park.id.toLowerCase().replace(/\s+/g, '-')}`)}
                   className="group/btn relative w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-semibold text-sm rounded-xl shadow-lg hover:shadow-emerald-500/25 hover:from-emerald-500 hover:to-teal-600 transform hover:scale-105 transition-all duration-500 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center space-x-2">

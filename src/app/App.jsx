@@ -13,6 +13,7 @@ import Test from '../features/Test';
 import NotFound from '../features/utils/pages/NotFound';
 import Unauthorized from '../features/utils/pages/Unauthorized';
 import PackagesPage from '../features/packages/PackagesPage';
+import ParkDetailPage from '../features/parks/ParkDetailPage';
 
 export default function App() {
 	return (
@@ -37,6 +38,8 @@ export default function App() {
 
 			{/* Packages Page */}
 			<Route path='/packages' element={<PackagesPage/>} />
+
+			<Route path="/parks/:id" element={<ParkDetailPage/>} />
 
 			{/* Misc */}
 			<Route path="/test" element={<Test />} />

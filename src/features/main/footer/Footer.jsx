@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
 
       {/* Custom CSS for additional animations */}
-      <style jsx>{`
+      <style jsx="true">{`
         @keyframes bounce {
           0%, 100% { 
             transform: translateY(0); 

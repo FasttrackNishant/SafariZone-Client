@@ -1,0 +1,394 @@
+{
+  "parks": {
+    "tadoba": {
+      "parkId": "tadoba",
+      "name": "Tadoba Andhari Tiger Reserve",
+      "location": "Chandrapur, Maharashtra",
+      "description": "The jewel of Maharashtra's wildlife, famous for thrilling tiger sightings and dense forests. Home to over 88 tigers and diverse wildlife including leopards, sloth bears, and 195 bird species. Known as the 'Jewel of Vidarbha', this reserve offers the best tiger viewing opportunities in Maharashtra.",
+      "established": "1955",
+      "area": "625 sq km",
+      "images": [
+        "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "highlights": ["88+ Tigers", "195+ Bird Species", "Dense Teak Forests", "Ancient Caves", "Sloth Bears", "Wild Dogs"],
+      "bestTime": "October to June",
+      "zones": [
+        {
+          "zoneId": "core",
+          "name": "Core Zone",
+          "description": "Main safari area with highest chances of tiger sightings and pristine wilderness. This zone offers the most authentic jungle experience with minimal human interference.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Morning Safari",
+              "timing": "06:00 AM - 10:00 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 20,
+                  "availableSlots": 14,
+                  "pricePerJeep": 4500,
+                  "pricePerSeat": 750
+                },
+                {
+                  "type": "Canter",
+                  "capacity": 20,
+                  "totalSlots": 4,
+                  "availableSlots": 2,
+                  "pricePerCanter": 3000,
+                  "pricePerSeat": 250
+                }
+              ]
+            },
+            {
+              "sessionId": "evening",
+              "name": "Evening Safari",
+              "timing": "03:00 PM - 07:00 PM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 20,
+                  "availableSlots": 8,
+                  "pricePerJeep": 4500,
+                  "pricePerSeat": 750
+                },
+                {
+                  "type": "Canter",
+                  "capacity": 20,
+                  "totalSlots": 4,
+                  "availableSlots": 1,
+                  "pricePerCanter": 3000,
+                  "pricePerSeat": 250
+                }
+              ]
+            },
+            {
+              "sessionId": "night",
+              "name": "Night Safari",
+              "timing": "08:00 PM - 10:00 PM",
+              "duration": "2 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 10,
+                  "availableSlots": 5,
+                  "pricePerJeep": 5000,
+                  "pricePerSeat": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "zoneId": "buffer",
+          "name": "Buffer Zone",
+          "description": "Surrounding areas with rich biodiversity and less tourist rush, perfect for nature lovers. Experience wildlife in a more relaxed setting with excellent birdwatching opportunities.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Morning Safari",
+              "timing": "06:30 AM - 10:30 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 15,
+                  "availableSlots": 10,
+                  "pricePerJeep": 3500,
+                  "pricePerSeat": 600
+                }
+              ]
+            },
+            {
+              "sessionId": "evening",
+              "name": "Evening Safari",
+              "timing": "03:30 PM - 07:30 PM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 15,
+                  "availableSlots": 12,
+                  "pricePerJeep": 3500,
+                  "pricePerSeat": 600
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rules": [
+        "Valid ID proof required for all visitors",
+        "Maximum 6 persons allowed per jeep",
+        "No plastic bags or alcohol inside the park",
+        "Follow guide instructions strictly",
+        "Maintain silence during safari",
+        "Do not feed animals",
+        "Photography charges apply for professional cameras",
+        "Children below 5 years not allowed in core zone"
+      ]
+    },
+    "sanjay-gandhi": {
+      "parkId": "sanjay-gandhi",
+      "name": "Sanjay Gandhi National Park",
+      "location": "Mumbai, Maharashtra",
+      "description": "A unique urban national park spread across 104 sq km, home to ancient Kanheri Caves, diverse wildlife, and lush green forests. This park is a green lung for Mumbai, offering a perfect escape from city life with its rich flora, fauna, and historical significance dating back to 1st century BCE.",
+      "established": "1969",
+      "area": "104 sq km",
+      "images": [
+        "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1574263867128-d9c7e06c03b3?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1566650046306-0d5353eec8f9?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1445102815832-a1a6b4ae0012?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "highlights": ["Kanheri Caves", "Urban Wildlife", "200+ Butterfly Species", "Nature Trails", "Lion & Tiger Safari", "Boating"],
+      "bestTime": "October to March",
+      "zones": [
+        {
+          "zoneId": "main",
+          "name": "Main Safari Zone",
+          "description": "Primary safari area featuring diverse wildlife including leopards, deer, and numerous bird species. The main attraction zone with guided nature walks and wildlife safaris.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Morning Safari",
+              "timing": "06:30 AM - 10:30 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 15,
+                  "availableSlots": 12,
+                  "pricePerJeep": 3000,
+                  "pricePerSeat": 500
+                },
+                {
+                  "type": "Bus",
+                  "capacity": 25,
+                  "totalSlots": 8,
+                  "availableSlots": 6,
+                  "pricePerBus": 2000,
+                  "pricePerSeat": 200
+                }
+              ]
+            },
+            {
+              "sessionId": "evening",
+              "name": "Evening Safari",
+              "timing": "02:30 PM - 06:30 PM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 15,
+                  "availableSlots": 9,
+                  "pricePerJeep": 3000,
+                  "pricePerSeat": 500
+                },
+                {
+                  "type": "Bus",
+                  "capacity": 25,
+                  "totalSlots": 8,
+                  "availableSlots": 4,
+                  "pricePerBus": 2000,
+                  "pricePerSeat": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "zoneId": "kanheri",
+          "name": "Kanheri Caves Zone",
+          "description": "Historical zone featuring ancient Buddhist caves dating back to 1st century BCE. Combine wildlife viewing with cultural heritage in this unique zone.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Heritage & Nature Walk",
+              "timing": "07:00 AM - 11:00 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Walking",
+                  "capacity": 15,
+                  "totalSlots": 6,
+                  "availableSlots": 4,
+                  "pricePerGroup": 1500,
+                  "pricePerSeat": 300
+                }
+              ]
+            },
+            {
+              "sessionId": "evening",
+              "name": "Sunset Heritage Tour",
+              "timing": "03:00 PM - 07:00 PM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Walking",
+                  "capacity": 15,
+                  "totalSlots": 6,
+                  "availableSlots": 5,
+                  "pricePerGroup": 1500,
+                  "pricePerSeat": 300
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rules": [
+        "Valid ID proof required for all visitors",
+        "No plastic bags or littering allowed",
+        "Maintain silence during safari",
+        "Follow park timings strictly",
+        "Do not disturb wildlife or feed animals",
+        "Respect the heritage caves and do not touch carvings",
+        "Swimming in lakes is prohibited",
+        "Carry sufficient water during walks"
+      ]
+    },
+    "melghat": {
+      "parkId": "melghat",
+      "name": "Melghat Tiger Reserve",
+      "location": "Amravati, Maharashtra",
+      "description": "Located in the scenic Satpura ranges, Melghat is one of India's first tiger reserves under Project Tiger (1974). Known for its rugged terrain, dense forests, and rich biodiversity, it's home to tigers, leopards, sloth bears, and the unique four-horned antelope. The reserve also showcases the traditional lifestyle of Korku tribes.",
+      "established": "1974",
+      "area": "1677 sq km",
+      "images": [
+        "https://images.unsplash.com/photo-1549366021-9f761d040a94?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1592784201029-bdb351d47eff?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1586618166294-0c9a4add5b12?auto=format&fit=crop&w=1600&q=80"
+      ],
+      "highlights": ["Project Tiger Heritage", "Satpura Ranges", "Four-horned Antelope", "Korku Tribal Culture", "Dense Forests", "Waterfalls"],
+      "bestTime": "November to June",
+      "zones": [
+        {
+          "zoneId": "core",
+          "name": "Core Zone",
+          "description": "Primary tiger habitat with dense forests and wildlife corridors. This pristine wilderness area offers the best chances of spotting tigers and other apex predators in their natural habitat.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Morning Safari",
+              "timing": "06:00 AM - 10:00 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 12,
+                  "availableSlots": 8,
+                  "pricePerJeep": 4000,
+                  "pricePerSeat": 700
+                }
+              ]
+            },
+            {
+              "sessionId": "evening",
+              "name": "Evening Safari",
+              "timing": "03:00 PM - 07:00 PM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 12,
+                  "availableSlots": 6,
+                  "pricePerJeep": 4000,
+                  "pricePerSeat": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "zoneId": "buffer",
+          "name": "Buffer Zone",
+          "description": "Mixed landscape of forests and tribal settlements. Experience wildlife alongside traditional Korku culture and visit scenic waterfalls during monsoon season.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Cultural Safari",
+              "timing": "06:30 AM - 10:30 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 10,
+                  "availableSlots": 7,
+                  "pricePerJeep": 3200,
+                  "pricePerSeat": 550
+                }
+              ]
+            },
+            {
+              "sessionId": "evening",
+              "name": "Waterfall Safari",
+              "timing": "03:30 PM - 07:30 PM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Jeep",
+                  "capacity": 6,
+                  "totalSlots": 10,
+                  "availableSlots": 8,
+                  "pricePerJeep": 3200,
+                  "pricePerSeat": 550
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "zoneId": "research",
+          "name": "Research & Education Zone",
+          "description": "Special zone dedicated to wildlife research and environmental education. Perfect for nature enthusiasts and students interested in conservation efforts.",
+          "safaris": [
+            {
+              "sessionId": "morning",
+              "name": "Educational Tour",
+              "timing": "07:00 AM - 11:00 AM",
+              "duration": "4 hours",
+              "vehicles": [
+                {
+                  "type": "Bus",
+                  "capacity": 20,
+                  "totalSlots": 5,
+                  "availableSlots": 3,
+                  "pricePerBus": 2500,
+                  "pricePerSeat": 350
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rules": [
+        "Valid ID proof required for all visitors",
+        "Maximum 6 persons allowed per jeep",
+        "No plastic bags or alcohol inside the park",
+        "Follow guide instructions strictly",
+        "Respect tribal areas and culture",
+        "Do not disturb wildlife or tribal communities",
+        "Carry warm clothing during winter months",
+        "Inform guides about any medical conditions",
+        "Photography of tribal people requires permission"
+      ]
+    }
+  }
+}
