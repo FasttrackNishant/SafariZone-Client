@@ -42,7 +42,7 @@ export default function ParksSection({ isVisible }) {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-gradient-to-b from-slate-900/50 to-black py-24 relative overflow-hidden">
+    <section id="parks-section" className="bg-gradient-to-b from-slate-900/50 to-black py-24 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" viewBox="0 0 100 100">
           <defs>

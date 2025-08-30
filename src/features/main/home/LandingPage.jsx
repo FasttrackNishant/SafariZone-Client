@@ -11,6 +11,7 @@ export default function LandingPage() {
   const [isVisible, setIsVisible] = useState({});
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const observerRef = useRef();
+  const parksRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(
@@ -51,13 +52,20 @@ export default function LandingPage() {
     return () => observerRef.current?.disconnect();
   }, []);
 
+  const scrollToParks = () =>
+  {
+    parksRef?.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-black min-h-screen text-white overflow-x-hidden relative">
       <Navbar />
       <BackgroundOrbs mousePosition={mousePosition} />
-      <HeroSection currentImage={currentImage} setCurrentImage={setCurrentImage} />
+      <HeroSection currentImage={currentImage} setCurrentImage={setCurrentImage} scrollToParks={scrollToParks} />
       <FeaturesSection isVisible={isVisible} />
+      <div ref={parksRef}>
       <ParksSection isVisible={isVisible} />
+      </div>
       <Footer />
     </div>
   );

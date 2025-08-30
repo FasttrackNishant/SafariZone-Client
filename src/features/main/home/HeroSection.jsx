@@ -7,7 +7,7 @@ const heroImages = [
   "https://images.unsplash.com/photo-1592784201029-bdb351d47eff?q=80&w=2234&auto=format&fit=crop&w=1600&q=80",
 ];
 
-export default function     HeroSection({ currentImage, setCurrentImage }) {
+export default function     HeroSection({ currentImage, setCurrentImage ,scrollToParks}) {
   const navigate = useNavigate();
 
   return (
@@ -82,7 +82,7 @@ export default function     HeroSection({ currentImage, setCurrentImage }) {
           {/* CTA Buttons - Fixed sizing */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <button 
-              onClick={() => navigate('/book-safari')}
+              onClick={scrollToParks}
               className="group relative px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-semibold text-base rounded-2xl shadow-xl hover:shadow-emerald-500/25 hover:scale-105 transform transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 overflow-hidden border border-emerald-500/20 min-w-[180px]"
             >
               <span className="relative z-10 flex items-center space-x-2">
