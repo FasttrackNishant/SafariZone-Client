@@ -12,6 +12,7 @@ import LandingPage from '../features/main/home/LandingPage';
 import Test from '../features/Test';
 import NotFound from '../features/utils/pages/NotFound';
 import Unauthorized from '../features/utils/pages/Unauthorized';
+import PackagesPage from '../features/packages/PackagesPage';
 
 export default function App() {
 	return (
@@ -33,6 +34,9 @@ export default function App() {
 
 			{/* Employee Routes */}
 			<Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+
+			{/* Packages Page */}
+			<Route path='/packages' element={<PackagesPage/>} />
 
 			{/* Misc */}
 			<Route path="/test" element={<Test />} />
