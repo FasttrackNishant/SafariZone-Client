@@ -19,7 +19,7 @@ export default function EmployeeLogin() {
       console.log(aadToken)
       const result = await exchangeEmployeeToken(aadToken);
       if (result.success) {
-        localStorage.setItem("safari_token", result.data.accessToken);
+        localStorage.setItem("authToken", result.data.accessToken);
         setToken(result.data.accessToken);
 
         // extract roles from internal JWT or data

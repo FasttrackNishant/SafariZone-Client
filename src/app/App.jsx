@@ -17,6 +17,7 @@ import ParkDetailPage from '../features/parks/ParkDetailPage';
 import PackageDetailPage from '../features/packages/PackageDetailPage';
 import SafariBookingPage from '../features/booking/SafariBookingPage';
 import PaymentPage from '../features/payment/PaymentPage';
+import StaffLogin from '../features/auth/pages/employee/StaffLogin';
 
 export default function App() {
 	return (
@@ -26,7 +27,8 @@ export default function App() {
 			<Route path="/about" element={<About />} />
 			<Route path="/contact" element={<ContactUs />} />
 			<Route path="/get-started" element={<GetStartedPage />} />
-			<Route path="/auth" element={<AuthPage />} />
+			<Route path="/auth/tourist" element={<AuthPage />} />
+			<Route path="/auth/staff" element={<StaffLogin/>} />
 			<Route path="/unauthorized" element={<Unauthorized />} />
 
 			{/* Auth Pages */}

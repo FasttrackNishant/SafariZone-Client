@@ -23,11 +23,12 @@ export const AuthProvider = ({ children }) => {
 
 				try {
 					const decoded = jwtDecode(storedToken);
+					console.log("in auth context",decoded)
 					setUser({
 						id: decoded.id || null,
 						email: decoded.email || null,
-						name: decoded.name || null,
-						role: decoded.role || 'tourist',
+						name: decoded.name || "User",
+						role: decoded.role || 'N/A',
 					});
 				} catch (err) {
 					console.error('Invalid token:', err);
@@ -43,14 +44,17 @@ export const AuthProvider = ({ children }) => {
 			localStorage.removeItem('authToken');
 			setUser(null);
 		}
+		finally{
+			console.log("final user",user)
+		}
 	};
 
 	// 🔹 Initial check on mount
 	useEffect(() => {
 		const initAuth = async () => {
 			const storedToken = localStorage.getItem('authToken');
-			console.log('in auth contxt', storedToken);
 			if (storedToken) {
+				console.log("auth context",storedToken)
 				await verifyToken(storedToken);
 			}
 			setIsLoading(false);
@@ -60,10 +64,7 @@ export const AuthProvider = ({ children }) => {
 
 	// 🔹 Logout
 	const logout = () => {
-		localStorage.removeItem('authToken');
-		localStorage.removeItem('isLoggedIn');
-		setToken(null);
-		setUser(null);
+		clearAuth();
 
 		if (instance.getActiveAccount()) {
 			instance.logoutPopup();
@@ -72,15 +73,22 @@ export const AuthProvider = ({ children }) => {
 		toast.success(toastMessages.logoutSucess);
 	};
 
+	const clearAuth = () => {
+		localStorage.removeItem('authToken');
+		setUser(null);
+		setToken(null);
+	};
+
 	const value = {
 		user,
 		token,
 		isLoading,
 		isAuthenticated: !!user,
 		logout,
-		verifyToken, // Expose so you can call manually if needed
+		verifyToken,
 		setUser,
 		setToken,
+		clearAuth
 	};
 
 	return (
