@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useMsal } from '@azure/msal-react';
 import { Api } from '../api/touristApi';
+import toast from 'react-hot-toast';
+import { toastMessages } from '../../../core/toastConstants';
 
 const AuthContext = createContext();
 
@@ -66,6 +68,8 @@ export const AuthProvider = ({ children }) => {
 		if (instance.getActiveAccount()) {
 			instance.logoutPopup();
 		}
+
+		toast.success(toastMessages.logoutSucess);
 	};
 
 	const value = {

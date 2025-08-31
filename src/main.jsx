@@ -4,8 +4,11 @@ import App from './app/App.jsx'
 import MSALProvider from './features/auth/msalProvider.jsx';
 import { BrowserRouter } from 'react-router';
 import { AuthProvider } from './features/auth/context/AuthContext.jsx';
+import { Toaster } from 'react-hot-toast';
 
 createRoot(document.getElementById('root')).render(
+	<>
+	  <Toaster position="top-center" reverseOrder={false} />
 		<BrowserRouter>
 			<MSALProvider>
 				<AuthProvider>
@@ -13,4 +16,5 @@ createRoot(document.getElementById('root')).render(
 				</AuthProvider>
 			</MSALProvider>
 		</BrowserRouter>
+	</>
 );

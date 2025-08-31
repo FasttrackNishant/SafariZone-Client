@@ -1,20 +1,21 @@
-import { request } from "./apiHelper";
+import toast from 'react-hot-toast';
+import { request } from './apiHelper';
 
 export const Api = {
-  loginTourist: (email, password) =>
-    request("/auth/login-tourist", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    }),
+	loginTourist: async (email, password) => {
+		const res = await request('/auth/login-tourist', {
+			method: 'POST',
+			body: JSON.stringify({ email, password }),
+		});
+		return res;
+	},
 
-  verifyToken: (token) =>
-    request("/auth/verify", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-    }),
-
+	verifyToken: (token) =>
+		request('/auth/verify', {
+			method: 'POST',
+			headers: { Authorization: `Bearer ${token}` },
+		}),
 };
-
 
 // export async function loginTourist(email, password) {
 //   try {
@@ -35,7 +36,7 @@ export const Api = {
 
 //     return {
 //       success: true,
-//       data : data.data,             
+//       data : data.data,
 //       message: data?.message || "Login successful",
 //     };
 //   } catch (error) {

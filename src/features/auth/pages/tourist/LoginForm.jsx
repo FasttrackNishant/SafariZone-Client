@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { Api } from '../../api/touristApi';
 import {jwtDecode} from "jwt-decode";
+import toast from 'react-hot-toast';
+import { toastMessages } from '../../../../core/toastConstants';
 
 export default function LoginForm({ isLoading, setIsLoading }) {
 	const navigate = useNavigate();
@@ -70,9 +72,12 @@ export default function LoginForm({ isLoading, setIsLoading }) {
 				setUser(decodedUser); 
 				navigate('/');
 			}
+			else{
+				toast.error(toastMessages.loginError)
+			}
 		} catch (error) {
 			console.error('Login error:', error);
-			alert('Login failed. Please check your credentials and try again.');
+			toast.error(toastMessages.loginError)
 		} finally {
 			setIsLoading(false);
 		}
