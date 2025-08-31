@@ -28,7 +28,7 @@ export default function App() {
 			<Route path="/about" element={<About />} />
 			<Route path="/contact" element={<ContactUs />} />
 			<Route path="/get-started" element={<GetStartedPage />} />
-			<Route path="/auth/tourist" element={<AuthPage />} />
+			<Route path="/auth/tourist" element={<TouristLogin />} />
 			<Route path="/auth/staff" element={<StaffLogin/>} />
 			<Route path="/unauthorized" element={<Unauthorized />} />
 
