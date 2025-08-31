@@ -125,12 +125,22 @@ export default function Navbar() {
 										}
 										className="flex items-center space-x-3 p-2 rounded-xl hover:bg-slate-800/50 transition-all duration-300 group">
 										<div className="relative">
-											<img
-												src={user.profilePicture}
-												alt={user.name}
-												className="w-10 h-10 rounded-full border-2 border-emerald-500 group-hover:border-emerald-400 transition-all duration-300"
-											/>
-											<div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900"></div>
+											{user.profilePicture ? (
+												<>
+													<img
+														src={
+															user.profilePicture
+														}
+														alt={user.name}
+														className="w-10 h-10 rounded-full border-2 border-emerald-500 group-hover:border-emerald-400 transition-all duration-300"
+													/>
+													<div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900"></div>
+												</>
+											) : (
+												<div className="w-10 h-10 rounded-full border-4 border-emerald-500 bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-md font-bold text-white">
+													{user.name?.charAt(0)}
+												</div>
+											)}
 										</div>
 										<div className="hidden lg:block text-left">
 											<p className="text-slate-200 font-semibold text-sm">
@@ -167,13 +177,21 @@ export default function Navbar() {
 											{/* User Info Header */}
 											<div className="px-4 py-3 border-b border-slate-700/50">
 												<div className="flex items-center space-x-3">
-													<img
-														src={
-															user.profilePicture
-														}
-														alt={user.name}
-														className="w-12 h-12 rounded-full border-2 border-emerald-500"
-													/>
+													{user.profilePicture ? (
+														<img
+															src={
+																user.profilePicture
+															}
+															alt={user.name}
+															className="w-12 h-12 rounded-full border-2 border-emerald-500"
+														/>
+													) : (
+														<div className="w-10 h-10 rounded-full border-4 border-emerald-500 bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-md font-bold text-white">
+															{user.name?.charAt(
+																0
+															)}
+														</div>
+													)}
 													<div className="overflow-hidden">
 														<p className="text-slate-200 font-semibold truncate max-w-xs">
 															{user.name}

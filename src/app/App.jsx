@@ -19,6 +19,7 @@ import SafariBookingPage from '../features/booking/SafariBookingPage';
 import PaymentPage from '../features/payment/PaymentPage';
 import StaffLogin from '../features/auth/pages/employee/StaffLogin';
 import ParksPage from '../features/parks/alllParks/ParksPage';
+import ProfilePage from '../features/profile/ProfilePage';
 
 export default function App() {
 	return (
@@ -57,6 +58,7 @@ export default function App() {
 				element={<SafariBookingPage />}
 			/>
 			<Route path="/payment" element={<PaymentPage />} />
+			<Route path="/profile" element={<ProfilePage />} />
 
 			{/* Misc */}
 			<Route path="/test" element={<Test />} />
