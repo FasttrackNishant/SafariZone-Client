@@ -11,6 +11,10 @@ import NotificationCenter from './NotificationCenter';
 import ProfileSection from './ProfileSection';
 import SupportSection from './SupportSection';
 import StatsOverview from './StatsOverview';
+import Navbar from '../../main/navbar/Navbar';
+import BackgroundOrbs from '../../booking/BackgroundOrbs';
+import Footer from '../../main/footer/Footer';
+
 
 export default function TouristDashboard() {
   const navigate = useNavigate();
@@ -75,8 +79,8 @@ export default function TouristDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-black text-white">
-      {/* <Navbar /> */}
-      {/* <BackgroundOrbs /> */}
+      <Navbar />
+      <BackgroundOrbs />
 
       <div className="pt-20">
         <div className="max-w-7xl mx-auto px-6 py-8">
@@ -125,7 +129,7 @@ export default function TouristDashboard() {
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

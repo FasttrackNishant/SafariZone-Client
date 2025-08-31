@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router';
 import { AuthProvider } from './features/auth/context/AuthContext.jsx';
 
 createRoot(document.getElementById('root')).render(
-	<StrictMode>
 		<BrowserRouter>
 			<MSALProvider>
 				<AuthProvider>
@@ -14,5 +13,4 @@ createRoot(document.getElementById('root')).render(
 				</AuthProvider>
 			</MSALProvider>
 		</BrowserRouter>
-	</StrictMode>
 );

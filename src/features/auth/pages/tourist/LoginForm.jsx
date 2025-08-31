@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useAuth } from '../../context/AuthContext';
+import { Api } from '../../api/touristApi';
+import {jwtDecode} from "jwt-decode";
 
 export default function LoginForm({ isLoading, setIsLoading }) {
 	const navigate = useNavigate();
+	const { setToken, setUser } = useAuth();
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -10,10 +14,6 @@ export default function LoginForm({ isLoading, setIsLoading }) {
 	});
 	const [errors, setErrors] = useState({});
 	const [showPassword, setShowPassword] = useState(false);
-
-	useEffect(() => {
-		console.log(setIsLoading);
-	}, []);
 
 	const handleChange = (e) => {
 		const { name, value, type, checked } = e.target;
@@ -56,23 +56,18 @@ export default function LoginForm({ isLoading, setIsLoading }) {
 		setIsLoading(true);
 
 		try {
-			// Simulate API call
-			await new Promise((resolve) => setTimeout(resolve, 1500));
-
-			// Here you would typically make an API call to authenticate the user
-			console.log('Login data:', formData);
-
-			// Simulate successful login
-			alert('Login successful! Welcome back!');
-			navigate('/dashboard/tourist');
-
-			const response = await loginTourist(email, password);
+			const response = await Api.loginTourist(
+				formData.email,
+				formData.password
+			);
 			if (response.success) {
 				console.log(response);
-				console.log(response.data.accessToken);
-				localStorage.setItem('safari_token', response.data.accessToken);
-				setToken(response.data.accessToken);
-				setUser({ email, roles: ['Tourist'] }); // Role from backend or decoded token
+				let token = response.data.accessToken;
+				const decodedUser = jwtDecode(token);
+				console.log(decodedUser)
+				localStorage.setItem('authToken', response.data.accessToken);
+				setToken(token);
+				setUser(decodedUser); 
 				navigate('/');
 			}
 		} catch (error) {
