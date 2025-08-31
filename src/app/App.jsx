@@ -18,6 +18,7 @@ import PackageDetailPage from '../features/packages/PackageDetailPage';
 import SafariBookingPage from '../features/booking/SafariBookingPage';
 import PaymentPage from '../features/payment/PaymentPage';
 import StaffLogin from '../features/auth/pages/employee/StaffLogin';
+import ParksPage from '../features/parks/alllParks/ParksPage';
 
 export default function App() {
 	return (
@@ -46,6 +47,7 @@ export default function App() {
 			<Route path="/packages" element={<PackagesPage />} />
 
 			<Route path="/parks/:id" element={<ParkDetailPage />} />
+			<Route path="/parks" element={<ParksPage />} />
 			<Route
 				path="/package-details/:id"
 				element={<PackageDetailPage />}
