@@ -17,12 +17,37 @@ steps:
       versionSpec: '22'
     displayName: 'Install Node.js'
 
-  # 2️⃣ Install Dependencies
+  # 2️⃣ Install Dependencies and Build React App
   - script: |
       npm ci
       npm run build
-    displayName: 'Install dependencies'
+    displayName: 'Install dependencies and build'
 
+  # 3️⃣ Create dummy files for testing artifact
+  - script: |
+      echo "Hello, this is a test artifact!" > $(Build.ArtifactStagingDirectory)/test.txt
+      mkdir -p $(Build.ArtifactStagingDirectory)/dummy_folder
+      echo "Another file" > $(Build.ArtifactStagingDirectory)/dummy_folder/file.txt
+    displayName: 'Create dummy files'
+
+  # 4️⃣ Archive dummy files
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/dummy.zip'
+      replaceExistingArchive: true
+    displayName: 'Archive Dummy Files'
+
+  # 5️⃣ Publish dummy artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/dummy.zip'
+      ArtifactName: 'dummy'
+    displayName: 'Publish Dummy Artifact'
+
+  # 6️⃣ Archive React build output
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'   # for Vite
@@ -32,17 +57,18 @@ steps:
       replaceExistingArchive: true
     displayName: 'Archive React Build Output'
 
-# Publish artifact
+  # 7️⃣ Publish React artifact
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend.zip'
       ArtifactName: 'drop'
-    displayName: 'Publish Artifact'
+    displayName: 'Publish Frontend Artifact'
 
+  # 8️⃣ Deploy to Azure App Service
   - task: AzureRmWebAppDeployment@5
     inputs:
       ConnectionType: 'AzureRM'
-      azureSubscription: 'Safari-Zone'
+      azureSubscription: 'Safari-Zone'       # your service connection
       appType: 'webAppLinux'
       WebAppName: 'safari-zone'
       packageForLinux: '$(Build.ArtifactStagingDirectory)/frontend.zip'
