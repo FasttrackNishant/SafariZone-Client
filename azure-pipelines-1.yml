@@ -1,0 +1,45 @@
+trigger:
+- main
+
+pool:
+  name: 'default'
+
+variables:
+  node_version: '22'
+  build_dir: 'dist'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(node_version)'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Install dependencies and build app'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(build_dir)'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy build output to staging directory'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+    replaceExistingArchive: true
+  displayName: 'Archive app for deployment'
+
+- task: AzureRmWebAppDeployment@5
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Safari-Zone'
+    appType: 'webAppLinux'
+    WebAppName: 'safari-zone-frotend'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/app.zip'
+    DeploymentTypeLinux: 'oneDeploy'
