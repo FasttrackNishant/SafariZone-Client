@@ -39,6 +39,6 @@ steps:
       azureSubscription: 'Safari-Zone'
       appType: 'webAppLinux'
       WebAppName: 'safari-zone'
-      packageForLinux: '$(System.DefaultWorkingDirectory)/frontend.zip'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/dist'
       RuntimeStack: 'NODE|22-lts'
       DeploymentTypeLinux: 'oneDeploy'
