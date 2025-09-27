@@ -4,9 +4,9 @@ import { MsalProvider } from "@azure/msal-react";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
-const MSALProvider = ({children}) =>
+const MSALProviderFile = ({children}) =>
 {
     return <MsalProvider instance={msalInstance}>{children}</MsalProvider>;
 }
 
-export default MSALProvider;
+export default MSALProviderFile;
