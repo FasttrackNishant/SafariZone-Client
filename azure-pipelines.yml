@@ -44,8 +44,9 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Safari-Zone'        # Your service connection
     appType: 'webAppLinux'
-    WebAppName: 'safari-zone-frontend'      # Your app service name
+    WebAppName: 'safari-zone-frotend'      # Your app service name
     packageForLinux: '$(Build.ArtifactStagingDirectory)'
     RuntimeStack: 'NODE|22-lts'
     DeploymentTypeLinux: 'auto'
   displayName: 'Deploy React app to Azure App Service'
+
