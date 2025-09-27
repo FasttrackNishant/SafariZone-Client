@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+      - main   
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  appName: 'safari-zone'
+  packageDir: 'dist'               # Vite build output folder
+
+steps:
+  # 1️⃣ Install Node.js
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '22'
+    displayName: 'Install Node.js'
+
+  # 2️⃣ Install Dependencies
+  - script: |
+      npm ci
+    displayName: 'Install dependencies'
+
+  # 3️⃣ Build Vite App
+  - script: |
+      npm run build
+    displayName: 'Build Vite app'
+
+  # 4️⃣ Archive build folder into .zip
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(packageDir)'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(appName).zip'
+      replaceExistingArchive: true
+    displayName: 'Archive build output'
+
+  - task: AzureRmWebAppDeployment@5
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Safari-Zone'
+      appType: 'webAppLinux'
+      WebAppName: 'safari-zone'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      RuntimeStack: 'NODE|22-lts'
+      DeploymentTypeLinux: 'oneDeploy'
