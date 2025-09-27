@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { Api } from '../../api/touristApi';
+import toast from 'react-hot-toast';
 
 export default function SignupForm({isLoading, setIsLoading }) {
   const navigate = useNavigate();
@@ -13,12 +15,15 @@ export default function SignupForm({isLoading, setIsLoading }) {
     agreeToTerms: false,
     receiveUpdates: true
   });
+
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
+    console.log(isLoading)
     const { name, value, type, checked } = e.target;
+    console.log("test",name,value)
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
@@ -88,27 +93,41 @@ export default function SignupForm({isLoading, setIsLoading }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
-
-    setIsLoading(true);
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Here you would typically make an API call to register the user
-      console.log('Registration data:', formData);
-      
-      // Simulate successful registration
-      alert('Account created successfully! Welcome to Safari Bookings!');
-      navigate('/dashboard/tourist');
-      
-    } catch (error) {
-      console.error('Registration error:', error);
-      alert('Registration failed. Please try again.');
-    } finally {
-      setIsLoading(false);
+		if (!validateForm())
+    {
+      console.log("object")
     }
+    
+    console.log("handle ssubmit")
+		setIsLoading(true);
+
+		try {
+			console.log('Registration data:', formData);
+
+      let filteredData = {
+			email: formData.email,
+			passwordHash: formData.confirmPassword,
+			roleId: 3,
+			hasAgreedTerms: formData.agreeToTerms,
+			termsVersion: 'v1',
+		};
+
+			const response = await Api.signUpTourist(filteredData);
+      console.log(response)
+
+			if (response.success) {
+				toast.success(response.message || 'Registration successful');
+
+				navigate('/');
+			} else {
+				toast.error(response.message || 'Registration failed');
+			}
+		} catch (error) {
+			console.error('Registration error:', error);
+			toast.error('Registration failed',error.message);
+		} finally {
+			setIsLoading(false);
+		}
   };
 
   return (
@@ -178,7 +197,7 @@ export default function SignupForm({isLoading, setIsLoading }) {
       </div>
 
       {/* Phone Field */}
-      <div>
+      {/* <div>
         <label htmlFor="phone" className="block text-sm font-semibold text-slate-300 mb-2">
           Phone Number *
         </label>
@@ -196,7 +215,7 @@ export default function SignupForm({isLoading, setIsLoading }) {
         {errors.phone && (
           <p className="mt-1 text-sm text-red-400">{errors.phone}</p>
         )}
-      </div>
+      </div> */}
 
       {/* Password Fields */}
       <div className="grid md:grid-cols-2 gap-4">

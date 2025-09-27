@@ -1,10 +1,11 @@
+import { BASE_API_URLS } from '../../../shared/config';
 import { loginRequest } from '../api/authConfig';
 import { jwtDecode } from 'jwt-decode';
 
 export async function exchangeEmployeeToken(aadAccessToken) {
 	try {
 		const res = await fetch(
-			`${import.meta.env.VITE_API_BASE_URL}/auth/exchange`,
+			`${BASE_API_URLS.auth}/exchange`,
 			{
 				method: 'POST',
 				headers: {
