@@ -1,50 +1,51 @@
 trigger:
   branches:
     include:
-      - maind
+      - main
 
 pool:
   name: 'Default'
 
 variables:
-  appName: 'safari-zone'
-  packageDir: 'dist'               # Vite build output folder
+  node_version: '22'
+  build_dir: 'dist'       # Vite build output folder
 
 steps:
-  # 1️⃣ Install Node.js
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '22'
-    displayName: 'Install Node.js'
+# 1️⃣ Install Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(node_version)'
+  displayName: 'Install Node.js'
 
-  # 2️⃣ Install Dependencies
-  - script: |
-      npm ci
-      npm run build
-    displayName: 'Install dependencies'
+# 2️⃣ Install dependencies and build app
+- script: |
+    npm ci
+    npm run build
+  displayName: 'Install dependencies and build app'
 
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'   # for Vite
-      includeRootFolder: false
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/frontend1.zip'
-      replaceExistingArchive: true
-    displayName: 'Archive React Build Output'
+# 3️⃣ Copy build output to staging directory
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(build_dir)'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy build output to staging directory'
 
-# Publish artifact
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend1.zip'
-      ArtifactName: 'drop'
-    displayName: 'Publish Artifact'
+# 4️⃣ (Optional) Publish artifact for debugging or later use
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'frontend'
+  displayName: 'Publish Build Artifact'
 
-  - task: AzureRmWebAppDeployment@5
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Safari-Zone'
-      appType: 'webAppLinux'
-      WebAppName: 'safari-zone'
-      packageForLinux: '$(Build.ArtifactStagingDirectory)/frontend1.zip'
-      RuntimeStack: 'NODE|22-lts'
-      DeploymentTypeLinux: 'oneDeploy'
+# 5️⃣ Deploy to Azure App Service Linux
+- task: AzureRmWebAppDeployment@5
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Safari-Zone'        # Your service connection
+    appType: 'webAppLinux'
+    WebAppName: 'safari-zone-frontend'      # Your app service name
+    packageForLinux: '$(Build.ArtifactStagingDirectory)'
+    RuntimeStack: 'NODE|22-lts'
+    DeploymentTypeLinux: 'auto'
+  displayName: 'Deploy React app to Azure App Service'
