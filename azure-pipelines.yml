@@ -28,14 +28,14 @@ steps:
       rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'   # for Vite
       includeRootFolder: false
       archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/frontend1.zip'
       replaceExistingArchive: true
     displayName: 'Archive React Build Output'
 
 # Publish artifact
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend1.zip'
       ArtifactName: 'drop'
     displayName: 'Publish Artifact'
 
@@ -45,6 +45,6 @@ steps:
       azureSubscription: 'Safari-Zone'
       appType: 'webAppLinux'
       WebAppName: 'safari-zone'
-      packageForLinux: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+      packageForLinux: '$(Build.ArtifactStagingDirectory)/frontend1.zip'
       RuntimeStack: 'NODE|22-lts'
       DeploymentTypeLinux: 'oneDeploy'
