@@ -20,20 +20,16 @@ steps:
   # 2️⃣ Install Dependencies
   - script: |
       npm ci
-    displayName: 'Install dependencies'
-
-  # 3️⃣ Build Vite App
-  - script: |
       npm run build
-    displayName: 'Build Vite app'
+    displayName: 'Install dependencies'
 
   # 4️⃣ Archive build folder into .zip
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(packageDir)'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
       includeRootFolder: false
       archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(appName).zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
       replaceExistingArchive: true
     displayName: 'Archive build output'
 
