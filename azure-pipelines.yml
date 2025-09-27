@@ -23,15 +23,21 @@ steps:
       npm run build
     displayName: 'Install dependencies'
 
-  # 4️⃣ Archive build folder into .zip
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: 'dist'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'   # for Vite
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
       replaceExistingArchive: true
-    displayName: 'Archive build output'
+    displayName: 'Archive React Build Output'
+
+# Publish artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+      ArtifactName: 'drop'
+    displayName: 'Publish Artifact'
 
   - task: AzureRmWebAppDeployment@5
     inputs:
@@ -39,6 +45,6 @@ steps:
       azureSubscription: 'Safari-Zone'
       appType: 'webAppLinux'
       WebAppName: 'safari-zone'
-      packageForLinux: '$(System.DefaultWorkingDirectory)/frontend.zip'
+      packageForLinux: '$(Pipeline.Workspace)/drop/frontend.zip'
       RuntimeStack: 'NODE|22-lts'
       DeploymentTypeLinux: 'oneDeploy'
